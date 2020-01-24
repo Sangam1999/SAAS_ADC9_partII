@@ -2,6 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import Template
 from .models import Book
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 def home(request):
@@ -65,6 +69,13 @@ def delete_object(request,ID):
 
     return HttpResponse("Record delete Successfully!!")
 
-
+def view_register_user(request):
+    if request.method =="GET":
+        return render(request,'registration/register,html')
+    else:
+        print(request.POST)
+        user = User.objects.create_user(username=request.POST['input_username'],password=request.POST['input_password'],email=request.POST['input_email'])
+        user.save()
+        return HttpResponse("Signup Successful")
 
     

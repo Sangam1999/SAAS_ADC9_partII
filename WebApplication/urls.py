@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from WebApp.views import home,table,data_save,view_update_booking,view_update_form_data_in_db,delete_object
+from WebApp.views import home,table,data_save,view_update_booking,view_update_form_data_in_db,delete_object,view_register_user
 from uploadapp.views import index,normalupload
 
 
@@ -37,9 +37,11 @@ urlpatterns = [
     path('table/delete/<int:ID>',delete_object),
     path('delete/<int:ID>',delete_object),
     path('upload',index),
-    path('normalupload',normalupload,name="noramalupload")
-
+    path('normalupload',normalupload,name="noramalupload"),
+    path('signup/',view_register_user),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
