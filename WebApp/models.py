@@ -25,7 +25,8 @@ class Book(models.Model):
     def __str__(self):
         return self.name
 
-
+    def is_valid_phone(self):
+        return self.phone >=0
 
 
 class Guest(models.Model):
@@ -66,4 +67,5 @@ class Hotel(models.Model):
     room = models.ForeignKey(Room,on_delete = models.CASCADE)
     def __str__(self):
         return self.name
-
+    
+    
