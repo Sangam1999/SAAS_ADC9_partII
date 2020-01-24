@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from WebApp.views import home,view_hello_world,table,data_save,view_update_booking,view_update_form_data_in_db,delete_object,view_register_user
 from uploadapp.views import index,normalupload
-from .views import view_authenticate_user
+from WebApp.views import view_authenticate_user
 
 from django.conf import settings
 from django.conf.urls.static import static
