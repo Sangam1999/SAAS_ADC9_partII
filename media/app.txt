@@ -1,0 +1,11 @@
+flat just like Amazon
+Online shop
+how to?? like cooking foods,
+
+
+app- where you can post or see flat which are vacant or going to vacant. user can book it online by contacting the another user.
+how to??- app where user can see other's user videos related to this app. videos contains about how to do certain things.
+News app
+
+var original = Runner.prototype.gameOver
+Runner.prototype.gameOver = function (){}

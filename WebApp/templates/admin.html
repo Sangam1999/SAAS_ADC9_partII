@@ -1,0 +1,121 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static './bootstrap.css' %}" />
+    <script type="text/javascript" src="{% static './bootstrap.js' %}"></script>
+
+    <title>HOTEL BOOKING</title>
+
+    <style type="text/css">
+      a {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">HOTEL</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="booking"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="table">Admin</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" action="table" method="GET">
+          {% csrf_token %}
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search for Name"
+            aria-label="Search"
+            name="search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </nav>
+    <!-- Content-->
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h1 style="margin-top: 2%;">List of Bookings:</h1>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Phone</th>
+                <th scope="col">No.of adult</th>
+                <th scope="col">No.of children</th>
+                <th scope="col">Check-in</th>
+                <th scope="col">Check-out</th>
+                <th scope="col">Payment</th>
+                <th scope="col">Comment</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            {% for datas in Info %}
+            <tbody>
+              <tr>
+                <th scope="row">{{datas.id}}</th>
+                <td>{{datas.name}}</td>
+                <td>{{datas.email}}</td>
+                <td>{{datas.phone}}</td>
+                <td>{{datas.number_of_adults}}</td>
+                <td>{{datas.number_of_children}}</td>
+                <td>{{datas.arrival}}</td>
+                <td>{{datas.checkOut}}</td>
+                <td>{{datas.payment}}</td>
+                <td>{{datas.comment}}</td>
+                <td>
+                  <span class="badge badge-primary badge-pill"
+                    ><a href="edit/{{datas.id}}">Update</a></span
+                  >
+                </td>
+                <td>
+                  <span class="badge badge-primary badge-pill"
+                    ><a href="delete/{{datas.id}}">Delete</a></span
+                  >
+                </td>
+              </tr>
+            </tbody>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
