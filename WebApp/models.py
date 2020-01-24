@@ -28,6 +28,9 @@ class Book(models.Model):
     def is_valid_phone(self):
         return self.phone >=0
 
+    def is_valid_book(self):
+        return self.arrival != self.checkOut
+
 
 class Guest(models.Model):
     name=models.CharField(max_length=20)
