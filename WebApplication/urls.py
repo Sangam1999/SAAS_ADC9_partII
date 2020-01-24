@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from WebApp.views import home,table,data_save,view_update_booking,view_update_form_data_in_db,delete_object,view_register_user,view_authenticate_user,view_hello_world,logout_view
 from WebApp.views import home,view_hello_world,table,data_save,view_update_booking,view_update_form_data_in_db,delete_object,view_register_user
 from uploadapp.views import index,normalupload
 from .views import view_authenticate_user
-
+from WebApp.views import view_authenticate_user
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -40,6 +41,8 @@ urlpatterns = [
     path('normalupload',normalupload,name="noramalupload"),
     path('signup/',view_register_user),
     path('restrictpage/',view_hello_world),
+    path('logout/',logout_view, name = "logoutuser"),
+    path('accounts/login/logout/',view_authenticate_user)
 
 ]
 

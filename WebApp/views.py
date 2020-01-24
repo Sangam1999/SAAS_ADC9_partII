@@ -98,3 +98,7 @@ def view_authenticate_user(request):
         else:
             return HttpResponse('Authentication Failed')
 
+def logout_view(request):
+    logout(request)
+    print("logged user",request.user)
+    return render(request,'registration/login.html') 
