@@ -14,3 +14,6 @@ class ModelTestCase(TestCase):
         value=guest2.is_valid_guest()
         self.assertTrue(value,True)
     
+    def test_guest_name(self):
+        guest3=Guest.objects.get(name="Shakti")
+        self.assertEqual(guest3.name,'Bigyan')
