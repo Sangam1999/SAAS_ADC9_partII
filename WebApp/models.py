@@ -22,6 +22,9 @@ class Book(models.Model):
     arrival=models.DateField()
     checkOut=models.DateField()
 
+    def __str__(self):
+        return self.name
+
 
 
 
@@ -32,6 +35,9 @@ class Guest(models.Model):
 
     def __str__(self):
         return f"the guest in {self.Hotel}"
+
+    def is_valid_guest(self):
+        return self.name!=None
 
 class Room(models.Model):
     number=models.IntegerField()
