@@ -28,5 +28,10 @@ class ModelTestCase(TestCase):
         book2=Book.objects.get(phone="9874552111")
         value=book2.is_valid_phone()
         self.assertFalse(value,True)
+
+    def test_valid_book(self):
+        b = Book.objects.get(arrival="2016-02-25",checkOut="2018-03-25")
+        value=b.is_valid_book()
+        self.assertTrue(b,True)
     
     
