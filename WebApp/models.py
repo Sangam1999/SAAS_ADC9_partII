@@ -1,5 +1,5 @@
 from django.db import models
-
+#import DateField
 
 # specifying choices 
   
@@ -30,8 +30,7 @@ class Guest(models.Model):
     email=models.CharField(null=True, max_length=50)
     phone=models.IntegerField()
 
-    def __str__(self):
-        return f"the guest in {self.Hotel}"
+    
 
 class Room(models.Model):
     number=models.IntegerField()
@@ -39,11 +38,6 @@ class Room(models.Model):
     types=models.CharField(max_length=20)
     guests = models.ForeignKey(Guest,on_delete = models.CASCADE)
     booking = models.ManyToManyField(Book) # booking may of many rooms at the same time one room may have multiple bookings
-
-
-    def __str__(self):
-        return f"the  {self.Hotel}contains room"
-
 
 
 
@@ -60,4 +54,7 @@ class Hotel(models.Model):
     room = models.ForeignKey(Room,on_delete = models.CASCADE)
     def __str__(self):
         return self.name
+
+
+
 
