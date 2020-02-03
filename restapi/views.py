@@ -18,6 +18,16 @@ def view_get_post_book(request):
 
         return JsonResponse(dict_name)
     elif request.method == 'POST':
-        return HttpResponse("POST testing")
+        print("Request body content =>",request.body)
+        print("Request body type =>",type(request.body))
+        python_dictionary_object = json.loads(request.body)
+        print("Python body contents =>",request.python_dictionary_object)
+        print("Python body type =>",type(request.python_dictionary_object))
+        print(python_dictionary_object['name'])
+        print(python_dictionary_object['email'])
+        Book.objects.create(name=python_dictionary_object['name'],email=python_dictionary_object['name'])
+        return JsonResponse({
+            "message":"Successfully posted"
+        })
     else:
         return HttpResponse("Other http verbs testing")
