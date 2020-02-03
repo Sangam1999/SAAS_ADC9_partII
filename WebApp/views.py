@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from django.template import Template
 from .models import Book
 from django.core.files.storage import FileSystemStorage
