@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import Template
 from .models import Book
+from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -17,6 +18,15 @@ def view_hello_world(request):
 
 def home(request):
     return render(request,'booking.html')
+
+def upload(request):
+    context={}
+    if request.method == 'POST':
+        uploaded_file = request.FILES['document']
+        fs = FileSystemStorage()
+        name = fs.save(uploaded_file.name, uploaded_file)
+        context['url'] = fs.url(name)
+    return render(request,'booking.html', context)
 
 def data_save(request):
     get_name=request.POST.get("name")

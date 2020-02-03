@@ -147,6 +147,14 @@
             
               <button type="submit" class="btn btn-primary">Book</button>
             </form>
+            <form method="post" action="upload" enctype="multipart/form-data">
+              {% csrf_token%}
+              <input type="file" name="document">
+              <button type="submit">Upload</button>
+            </form>
+            {% if url %}
+              <p>Uploaded file:<a href="{{ url }}">{{ url }}</p>
+            {% endif %}
           </div>
         </div>
       </div>

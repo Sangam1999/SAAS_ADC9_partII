@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from WebApp.views import home,view_hello_world,table,data_save,view_update_booking,view_update_form_data_in_db,delete_object,view_register_user
+from WebApp.views import home,upload,view_hello_world,table,data_save,view_update_booking,view_update_form_data_in_db,delete_object,view_register_user
 from uploadapp.views import index,normalupload
 from WebApp.views import view_authenticate_user
 
@@ -29,6 +29,7 @@ urlpatterns = [
     path('table/booking',home),
     path("table/table",table),
     path("save",data_save),
+    path("upload",upload),
     path("table/save",data_save),
     path("edit/<int:ID>",view_update_booking),
     path("table/edit/<int:ID>",view_update_booking),
