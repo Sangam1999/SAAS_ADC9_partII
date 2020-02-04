@@ -23,13 +23,6 @@ def view_get_post_book(request):
         python_dictionary_object = json.loads(request.body)
         print("Python body contents =>",request.python_dictionary_object)
         print("Python body type =>",type(request.python_dictionary_object))
-        print(python_dictionary_object['name'])
-        print(python_dictionary_object['email'])
-        print(python_dictionary_object['phone'])
-        print(python_dictionary_object['number_of_adults'])
-        print(python_dictionary_object['number_of_children'])
-        print(python_dictionary_object['arrival'])
-        print(python_dictionary_object['checkOut'])
         Book.objects.create(name=python_dictionary_object['name'],email=python_dictionary_object['name'],phone=python_dictionary_object['phone'],number_of_adults=python_dictionary_object['number_of_adults'],number_of_children=python_dictionary_object['number_of_children'],arrival=python_dictionary_object['arrival'],checkOut=python_dictionary_object['checkOut'])
         return JsonResponse({
             "message":"Successfully posted"
