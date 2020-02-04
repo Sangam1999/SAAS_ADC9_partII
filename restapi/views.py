@@ -25,9 +25,33 @@ def view_get_post_book(request):
         print("Python body type =>",type(request.python_dictionary_object))
         print(python_dictionary_object['name'])
         print(python_dictionary_object['email'])
-        Book.objects.create(name=python_dictionary_object['name'],email=python_dictionary_object['name'])
+        print(python_dictionary_object['phone'])
+        print(python_dictionary_object['number_of_adults'])
+        print(python_dictionary_object['number_of_children'])
+        print(python_dictionary_object['arrival'])
+        print(python_dictionary_object['checkOut'])
+        Book.objects.create(name=python_dictionary_object['name'],email=python_dictionary_object['name'],phone=python_dictionary_object['phone'],number_of_adults=python_dictionary_object['number_of_adults'],number_of_children=python_dictionary_object['number_of_children'],arrival=python_dictionary_object['arrival'],checkOut=python_dictionary_object['checkOut'])
         return JsonResponse({
             "message":"Successfully posted"
         })
     else:
         return HttpResponse("Other http verbs testing")
+
+@csrf_exempt
+def view_getByID_updateByID_deleteByID(request,ID):
+    if request.method == 'GET':
+        bookings=Book.objects.get(id=ID)
+        return JsonResponse({
+            "id":bookings.id,
+            "name":bookings.name,
+            "email":bookings.email,
+            "phone":bookings.phone,
+            "number_of_aduts":bookings.number_of_adults,
+            "number_of_children":bookings.number_of_children,
+            "arrival":bookings.arrival,
+            "checkOut":bookings.checkOut
+        })
+    else:
+        return JsonResponse({
+            "message":"Other http verbs testings"
+        })
