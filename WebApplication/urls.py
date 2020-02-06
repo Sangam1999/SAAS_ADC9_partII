@@ -31,6 +31,7 @@ urlpatterns = [
     path("table/table",table),
     path("save",data_save),
     path("upload",upload),
+    path("table/upload",upload),
     path("table/save",data_save),
     path("edit/<int:ID>",view_update_booking),
     path("table/edit/<int:ID>",view_update_booking),
@@ -40,7 +41,7 @@ urlpatterns = [
     path('delete/<int:ID>',delete_object),
     path('upload',index),
     path('normalupload',normalupload,name="noramalupload"),
-    path('signup/',view_register_user),
+    path('signup/',view_register_user,name="signup"),
     path('restrictpage/',view_hello_world),
     path('api/book/',view_get_post_book),
     path('api/book/<int:ID>',view_getByID_updateByID_deleteByID),
@@ -51,5 +52,5 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns+=[
-    path('accounts/login/',view_authenticate_user)
+    path('accounts/login/',view_authenticate_user,name="login")
 ]
