@@ -40,7 +40,7 @@ urlpatterns = [
     path('delete/<int:ID>',delete_object),
     path('upload',index),
     path('normalupload',normalupload,name="noramalupload"),
-    path('signup/',view_register_user),
+    path('signup/',view_register_user,name="signup"),
     path('restrictpage/',view_hello_world),
     path('api/book/',view_get_post_book),
     path('api/book/<int:ID>',view_getByID_updateByID_deleteByID),
@@ -51,5 +51,5 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns+=[
-    path('accounts/login/',view_authenticate_user)
+    path('accounts/login/',view_authenticate_user,name="login")
 ]
