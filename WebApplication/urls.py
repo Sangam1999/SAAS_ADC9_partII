@@ -31,6 +31,7 @@ urlpatterns = [
     path("table/table",table),
     path("save",data_save),
     path("upload",upload),
+    path("table/upload",upload),
     path("table/save",data_save),
     path("edit/<int:ID>",view_update_booking),
     path("table/edit/<int:ID>",view_update_booking),
