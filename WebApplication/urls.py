@@ -47,7 +47,11 @@ urlpatterns = [
     path('api/book/',view_get_post_book),
     path('api/book/<int:ID>',view_getByID_updateByID_deleteByID),
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     path('api/book/update/<int:ID>',api_update_data),
+=======
+    path('api/page/<int:PAGENO>', api_hotel_pagination)
+>>>>>>> Stashed changes
 =======
     path('api/page/<int:PAGENO>', api_hotel_pagination)
 >>>>>>> Stashed changes

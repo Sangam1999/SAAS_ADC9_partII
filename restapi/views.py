@@ -55,6 +55,7 @@ def view_getByID_updateByID_deleteByID(request,ID):
             "message":"Other http verbs testings"
         })
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 @csrf_exempt
 def api_update_data(request,ID):
     book = Book.objects.get(id=ID)
@@ -74,6 +75,8 @@ def api_update_data(request,ID):
     else:
         return JsonResponse({"id":id,"name":book.name,"email":book.email,"phone":book.phone,"number_of_adults":book.number_of_adults,"number_of_children":book.number_of_children,"arrival":book.arrival,"checkOut":book.checkOut})
 =======
+=======
+>>>>>>> Stashed changes
 
 def api_hotel_pagination(request, PAGENO):
     SIZE = 5
@@ -83,4 +86,7 @@ def api_hotel_pagination(request, PAGENO):
         "hotel": list(hotel.values("name","lastname","children"))
     }
     return JsonResponse(dict)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
