@@ -40,7 +40,6 @@ class Room(models.Model):
     booking = models.ManyToManyField(Book) # booking may of many rooms at the same time one room may have multiple bookings
 
 
-
 class Hotel(models.Model):
     hotel_name = models.CharField(max_length = 50)
     place = models.CharField(max_length = 50)
