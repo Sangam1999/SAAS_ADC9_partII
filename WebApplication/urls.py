@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from WebApp.views import home,upload,view_hello_world,table,data_save,view_update_booking,view_update_form_data_in_db,delete_object,view_register_user
-from restapi.views import view_get_post_book,view_getByID_updateByID_deleteByID,api_update_data
+from restapi.views import view_get_post_book,view_getByID_updateByID_deleteByID,api_update_data,api_hotel_pagination
 from uploadapp.views import index,normalupload
 from WebApp.views import view_authenticate_user
 
@@ -49,6 +49,7 @@ urlpatterns = [
 
     path('api/book/update/<int:ID>',api_update_data),
 
+    path('api/page/<int:PAGENO>', api_hotel_pagination),
 
 
 
