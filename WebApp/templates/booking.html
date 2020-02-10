@@ -54,12 +54,12 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="booking"
+            <a class="nav-link" href="{% url 'booking' %}"
               >Home </a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="table">Admin<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{% url 'table' %}">Admin<span class="sr-only">(current)</span></a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -72,6 +72,9 @@
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
             Search
           </button>
+          <button class="btn"><a href="{% url 'login' %}">LOGIN</a></button>
+          <button class="btn"><a href="{% url 'signup' %}">SIGN UP</a></button>
+
         </form>
       </div>
     </nav>
@@ -144,26 +147,17 @@
                   <input type="date" class="form-control" name="checkOut" />
                 </div>
               </div>
-              <div class="form-group">
-                <div>
-                  <label>Payment</label>
-                  <select id="inputState" class="form-control" name="payment">
-                    <option selected>IMEPay</option>
-                    <option>Khalti</option>
-                    <option>IPay</option>
-                    <option>Prabhu Pay</option>
-                    <option>E-Sewa</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label>Anything else we should know about.</label>
-                  <input type="textarea" name="comment" class="form-control" />
-                </div>
-                
-              </div>
+            
               <button type="submit" class="btn btn-primary">Book</button>
             </form>
+            <form method="post" action="upload" enctype="multipart/form-data">
+              {% csrf_token%}
+              <input type="file" name="document">
+              <button type="submit">Upload</button>
+            </form>
+            {% if url %}
+              <p>Uploaded file:<a href="{{ url }}">{{ url }}</p>
+            {% endif %}
           </div>
         </div>
       </div>

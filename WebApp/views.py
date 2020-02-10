@@ -1,12 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from django.template import Template
 from .models import Book
+from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-
 
 def view_hello_world(request):
     print(request.user)
@@ -18,6 +18,15 @@ def view_hello_world(request):
 def home(request):
     return render(request,'booking.html')
 
+def upload(request):
+    context={}
+    if request.method == 'POST':
+        uploaded_file = request.FILES['document']
+        fs = FileSystemStorage()
+        name = fs.save(uploaded_file.name, uploaded_file)
+        context['url'] = fs.url(name)
+    return render(request,'booking.html', context)
+
 def data_save(request):
     get_name=request.POST.get("name")
     get_email=request.POST.get("email")
@@ -26,10 +35,8 @@ def data_save(request):
     get_number_of_children=request.POST.get("number_of_children")
     get_arrival=request.POST.get("arrival")
     get_checkOut=request.POST.get("checkOut")
-    get_payment=request.POST.get("payment")
-    get_comment=request.POST.get("comment")
 
-    book_obj= Book(name=get_name,email=get_email,phone=get_phone,number_of_adults=get_number_of_adults,number_of_children=get_number_of_children,arrival=get_arrival,checkOut=get_checkOut,payment=get_payment,comment=get_comment)
+    book_obj= Book(name=get_name,email=get_email,phone=get_phone,number_of_adults=get_number_of_adults,number_of_children=get_number_of_children,arrival=get_arrival,checkOut=get_checkOut)
     book_obj.save()
 
     return render(request,'booking.html')
@@ -64,8 +71,6 @@ def  view_update_form_data_in_db(request,ID):
     book_obj.number_of_children=request.POST['number_of_children']
     book_obj.arrival=request.POST['arrival']
     book_obj.checkOut=request.POST['checkOut']
-    book_obj.payment=request.POST['payment']
-    book_obj.comment=request.POST['comment']
     book_obj.save()
 
     return HttpResponse("Record Updated Successfully!!")

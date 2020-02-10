@@ -40,12 +40,12 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="booking"
+            <a class="nav-link" href="{% url 'booking' %}"
               >Home <span class="sr-only">(current)</span></a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="table">Admin</a>
+            <a class="nav-link" href="{% url 'table' %}">Admin</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="table" method="GET">
@@ -81,8 +81,6 @@
                 <th scope="col">No.of children</th>
                 <th scope="col">Check-in</th>
                 <th scope="col">Check-out</th>
-                <th scope="col">Payment</th>
-                <th scope="col">Comment</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
               </tr>
@@ -98,8 +96,6 @@
                 <td>{{datas.number_of_children}}</td>
                 <td>{{datas.arrival}}</td>
                 <td>{{datas.checkOut}}</td>
-                <td>{{datas.payment}}</td>
-                <td>{{datas.comment}}</td>
                 <td>
                   <span class="badge badge-primary badge-pill"
                     ><a href="edit/{{datas.id}}">Update</a></span
@@ -114,6 +110,7 @@
             </tbody>
             {% endfor %}
           </table>
+          
         </div>
       </div>
     </div>
