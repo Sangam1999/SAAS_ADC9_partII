@@ -44,6 +44,12 @@ def view_getByID_updateByID_deleteByID(request,ID):
             "arrival":bookings.arrival,
             "checkOut":bookings.checkOut
         })
+    elif request.method == 'DELETE':
+        obj= Book.objects.get(id=ID)
+        obj.delete()
+        return JsonResponse({
+            "message":"Successfully deleted"
+        })
     else:
         return JsonResponse({
             "message":"Other http verbs testings"
