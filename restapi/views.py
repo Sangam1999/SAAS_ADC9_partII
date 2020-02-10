@@ -50,18 +50,25 @@ def view_getByID_updateByID_deleteByID(request,ID):
         return JsonResponse({
             "message":"Successfully deleted"
         })
-    elif request.method == 'PUT':
-        books=Book.objects.get(id=ID)
-        books.name=request.POST['name']
-        books.email=request.POST['email']
-        books.phone=request.POST['phone']
-        books.number_of_adults=request.POST['number_of_adults']
-        books.number_of_children=request.POST['number_of_children']
-        books.arrival=request.POST['arrival']
-        books.checkOut=request.POST['checkOut']
-        books.save()
-
     else:
         return JsonResponse({
             "message":"Other http verbs testings"
         })
+@csrf_exempt
+def api_update_data(request,ID):
+    book = Book.objects.get(id=ID)
+    if request.method == 'PUT':
+        decoded_data = request.body.decode('utf-8')
+        book_data=json.loads(decoded_data)
+        book.name=book_data['name']
+        book.email=book_data['email']
+        book.phone=book_data['phone']
+        book.number_of_adults=book_data['number_of_adults']
+        book.number_of_children=book_data['number_of_children']
+        book.arrival=book_data['arrival']
+        book.checkOut=book_data['checkOut']
+        book.save()
+        return JsonResponse({"message":"Update completed"})
+
+    else:
+        return JsonResponse({"id":id,"name":book.name,"email":book.email,"phone":book.phone,"number_of_adults":book.number_of_adults,"number_of_children":book.number_of_children,"arrival":book.arrival,"checkOut":book.checkOut})
