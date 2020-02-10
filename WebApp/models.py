@@ -1,5 +1,5 @@
 from django.db import models
-
+import datetime
 
 # specifying choices 
   
@@ -22,7 +22,14 @@ class Book(models.Model):
     arrival=models.DateField()
     checkOut=models.DateField()
 
+    def __str__(self):
+        return self.name
 
+    def is_valid_phone(self):
+        return self.phone >=0
+
+    def is_valid_book(self):
+        return self.arrival != self.checkOut
 
 
 class Guest(models.Model):
@@ -32,6 +39,9 @@ class Guest(models.Model):
 
     def __str__(self):
         return f"the guest in {self.Hotel}"
+
+    def is_valid_guest(self):
+        return self.name!=None
 
 class Room(models.Model):
     number=models.IntegerField()
@@ -60,4 +70,5 @@ class Hotel(models.Model):
     room = models.ForeignKey(Room,on_delete = models.CASCADE)
     def __str__(self):
         return self.name
-
+    
+    
