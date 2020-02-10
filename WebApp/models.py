@@ -51,6 +51,12 @@ class Room(models.Model):
     booking = models.ManyToManyField(Book) # booking may of many rooms at the same time one room may have multiple bookings
 
 
+    def __str__(self):
+        return f"the  {self.Hotel}contains room"
+
+
+
+
 class Hotel(models.Model):
     hotel_name = models.CharField(max_length = 50)
     place = models.CharField(max_length = 50)
@@ -61,8 +67,6 @@ class Hotel(models.Model):
         default = 'IMEPay'
         ) 
     comment=models.TextField(null=True)
-    room = models.ForeignKey(Room,on_delete = models.CASCADE)
-    def __str__(self):
-        return self.name
+ 
     
     
