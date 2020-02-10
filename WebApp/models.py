@@ -51,15 +51,12 @@ class Room(models.Model):
     booking = models.ManyToManyField(Book) # booking may of many rooms at the same time one room may have multiple bookings
 
 
-<<<<<<< HEAD
     def __str__(self):
         return f"the  {self.Hotel}contains room"
 
 
 
 
-=======
->>>>>>> Amit_ADC9_Many_To_Many_Relationship
 class Hotel(models.Model):
     hotel_name = models.CharField(max_length = 50)
     place = models.CharField(max_length = 50)
