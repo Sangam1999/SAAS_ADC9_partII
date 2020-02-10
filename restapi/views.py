@@ -75,10 +75,10 @@ def api_update_data(request,ID):
         return JsonResponse({"id":id,"name":book.name,"email":book.email,"phone":book.phone,"number_of_adults":book.number_of_adults,"number_of_children":book.number_of_children,"arrival":book.arrival,"checkOut":book.checkOut})
 
 def api_hotel_pagination(request, PAGENO):
-    SIZE = 3
-    SIZE = SIZE * (PAGENO-1)
+    SIZE = 5
+    skip = SIZE * (PAGENO-1)
     hotel = Book.objects.all() [skip:PAGENO*SIZE]
     dict = {
-        "hotel": list(hotel.values("name","lastname","children"))
+        "hotel": list(hotel.values("name","email","number_of_children"))
     }
     return JsonResponse(dict)
