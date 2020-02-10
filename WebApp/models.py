@@ -70,8 +70,6 @@ class Hotel(models.Model):
         default = 'IMEPay'
         ) 
     comment=models.TextField(null=True)
-    room = models.ForeignKey(Room,on_delete = models.CASCADE)
-    def __str__(self):
-        return self.name
+ 
     
     
