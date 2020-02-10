@@ -23,15 +23,12 @@ class Book(models.Model):
     checkOut=models.DateField()
 
 
-
-
 class Guest(models.Model):
     name=models.CharField(max_length=20)
     email=models.CharField(null=True, max_length=50)
     phone=models.IntegerField()
 
     
-
 class Room(models.Model):
     number=models.IntegerField()
     level=models.IntegerField()
