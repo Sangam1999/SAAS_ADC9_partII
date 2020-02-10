@@ -50,6 +50,17 @@ def view_getByID_updateByID_deleteByID(request,ID):
         return JsonResponse({
             "message":"Successfully deleted"
         })
+    elif request.method == 'PUT':
+        books=Book.objects.get(id=ID)
+        books.name=request.POST['name']
+        books.email=request.POST['email']
+        books.phone=request.POST['phone']
+        books.number_of_adults=request.POST['number_of_adults']
+        books.number_of_children=request.POST['number_of_children']
+        books.arrival=request.POST['arrival']
+        books.checkOut=request.POST['checkOut']
+        books.save()
+
     else:
         return JsonResponse({
             "message":"Other http verbs testings"
