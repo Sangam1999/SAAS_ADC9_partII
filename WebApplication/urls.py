@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from WebApp.views import home,upload,view_hello_world,table,data_save,view_update_booking,view_update_form_data_in_db,delete_object,view_register_user
+from WebApp.views import home,upload,view_logout,view_hello_world,table,data_save,view_update_booking,view_update_form_data_in_db,delete_object,view_register_user
 from restapi.views import view_get_post_book,view_getByID_updateByID_deleteByID,api_update_data,api_hotel_pagination
 from uploadapp.views import index,normalupload
 from WebApp.views import view_authenticate_user
@@ -44,6 +44,7 @@ urlpatterns = [
     path('normalupload',normalupload,name="noramalupload"),
     path('signup/',view_register_user,name="signup"),
     path('restrictpage/',view_hello_world),
+    path('logout/',view_logout,name="logout"),
     path('api/book/',view_get_post_book),
     path('api/book/<int:ID>',view_getByID_updateByID_deleteByID),
 

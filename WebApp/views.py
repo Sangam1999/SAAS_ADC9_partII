@@ -103,3 +103,6 @@ def view_authenticate_user(request):
         else:
             return HttpResponse('Authentication Failed')
 
+def view_logout(request):
+    logout(request)
+    return HttpResponse('You are logout!!')
